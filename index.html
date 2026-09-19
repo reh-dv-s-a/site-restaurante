@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Sabor & Arte Restaurante</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family:Arial, sans-serif;
+    }
+
+    html{
+      scroll-behavior:smooth;
+    }
+
+    body{
+      background:#f8f3eb;
+      color:#2b2b2b;
+    }
+
+    /* MENU */
+
+    header{
+      background:#161616;
+      padding:18px 8%;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      position:sticky;
+      top:0;
+      z-index:1000;
+    }
+
+    .logo{
+      color:#d9aa5b;
+      font-size:27px;
+      font-weight:bold;
+    }
+
+    nav a{
+      color:white;
+      text-decoration:none;
+      margin-left:24px;
+      font-size:15px;
+    }
+
+    nav a:hover{
+      color:#d9aa5b;
+    }
+
+    /* BANNER */
+
+    .banner{
+      min-height:85vh;
+
+      background:
+        linear-gradient(
+          rgba(0,0,0,.55),
+          rgba(0,0,0,.55)
+        ),
+        url("https://images.unsplash.com/photo-1517248135467-4c7edcad34c4")
+        center/cover;
+
+      display:flex;
+      align-items:center;
+      padding:8%;
+      color:white;
+    }
+
+    .banner-conteudo{
+      max-width:650px;
+    }
+
+    .banner h1{
+      font-size:58px;
+      line-height:1.05;
+      margin-bottom:20px;
+    }
+
+    .banner p{
+      font-size:20px;
+      line-height:1.6;
+      margin-bottom:30px;
+    }
+
+    .botao{
+      display:inline-block;
+      background:#d9aa5b;
+      color:#161616;
+      padding:15px 30px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    .botao:hover{
+      background:#f2c77f;
+    }
+
+    /* SEÇÕES */
+
+    section{
+      padding:80px 8%;
+    }
+
+    .titulo{
+      text-align:center;
+      font-size:38px;
+      margin-bottom:15px;
+      color:#3b2d20;
+    }
+
+    .subtitulo{
+      text-align:center;
+      color:#777;
+      margin-bottom:45px;
+      font-size:18px;
+    }
+
+    /* CARDÁPIO */
+
+    .cards{
+      display:flex;
+      gap:25px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+
+    .card{
+      background:white;
+      width:300px;
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow:0 6px 20px rgba(0,0,0,.10);
+      transition:.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-6px);
+    }
+
+    .card img{
+      width:100%;
+      height:210px;
+      object-fit:cover;
+    }
+
+    .card-conteudo{
+      padding:22px;
+    }
+
+    .card h3{
+      color:#9b6a2f;
+      margin-bottom:12px;
+      font-size:22px;
+    }
+
+    .card p{
+      line-height:1.6;
+      color:#666;
+    }
+
+    .preco{
+      display:block;
+      margin-top:15px;
+      font-size:20px;
+      font-weight:bold;
+      color:#161616;
+    }
+
+    /* SOBRE */
+
+    .sobre{
+      background:#1b1b1b;
+      color:white;
+    }
+
+    .sobre-container{
+      display:flex;
+      align-items:center;
+      gap:50px;
+      flex-wrap:wrap;
+    }
+
+    .sobre-texto{
+      flex:1;
+      min-width:280px;
+    }
+
+    .sobre-texto h2{
+      color:#d9aa5b;
+      font-size:40px;
+      margin-bottom:20px;
+    }
+
+    .sobre-texto p{
+      line-height:1.8;
+      color:#ddd;
+      font-size:18px;
+    }
+
+    .sobre img{
+      width:480px;
+      max-width:100%;
+      border-radius:20px;
+    }
+
+    /* DESTAQUE */
+
+    .destaque{
+      text-align:center;
+    }
+
+    .destaque-box{
+      max-width:900px;
+      margin:auto;
+      background:white;
+      padding:45px;
+      border-radius:20px;
+      box-shadow:0 6px 20px rgba(0,0,0,.08);
+    }
+
+    .destaque-box p{
+      font-size:20px;
+      line-height:1.7;
+    }
+
+    /* RESERVA */
+
+    .reserva{
+      background:#d9aa5b;
+      text-align:center;
+    }
+
+    .reserva h2{
+      font-size:38px;
+      margin-bottom:15px;
+    }
+
+    .reserva p{
+      font-size:18px;
+      margin-bottom:25px;
+    }
+
+    .botao-escuro{
+      display:inline-block;
+      background:#161616;
+      color:white;
+      padding:15px 32px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:bold;
+    }
+
+    /* FOOTER */
+
+    footer{
+      background:#111;
+      color:#bbb;
+      text-align:center;
+      padding:28px;
+    }
+
+    /* CELULAR */
+
+    @media(max-width:768px){
+
+      header{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      nav{
+        text-align:center;
+      }
+
+      nav a{
+        margin:0 8px;
+        line-height:2;
+      }
+
+      .banner h1{
+        font-size:40px;
+      }
+
+      .banner{
+        min-height:75vh;
+      }
+
+      .sobre-container{
+        flex-direction:column;
+      }
+
+      .titulo{
+        font-size:32px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+<header>
+
+  <div class="logo">
+    Sabor & Arte
+  </div>
+
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#cardapio">Cardápio</a>
+    <a href="#sobre">Sobre</a>
+    <a href="#reserva">Reservas</a>
+  </nav>
+
+</header>
+
+
+<section class="banner" id="inicio">
+
+  <div class="banner-conteudo">
+
+    <h1>
+      Uma experiência que vai além do sabor
+    </h1>
+
+    <p>
+      Gastronomia feita com ingredientes selecionados,
+      receitas especiais e momentos inesquecíveis.
+    </p>
+
+    <a class="botao" href="#cardapio">
+      Conheça nosso cardápio
+    </a>
+
+  </div>
+
+</section>
+
+
+<section id="cardapio">
+
+  <h2 class="titulo">
+    Destaques do Cardápio
+  </h2>
+
+  <p class="subtitulo">
+    Pratos preparados para tornar cada refeição especial.
+  </p>
+
+
+  <div class="cards">
+
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1547592180-85f173990554"
+        alt="Prato especial"
+      >
+
+      <div class="card-conteudo">
+
+        <h3>Risoto Especial</h3>
+
+        <p>
+          Risoto cremoso preparado com ingredientes
+          selecionados e toque especial do chef.
+        </p>
+
+        <span class="preco">
+          R$ 59,90
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1544025162-d76694265947"
+        alt="Carne especial"
+      >
+
+      <div class="card-conteudo">
+
+        <h3>Filé da Casa</h3>
+
+        <p>
+          Corte especial acompanhado de legumes,
+          molho artesanal e acompanhamento da casa.
+        </p>
+
+        <span class="preco">
+          R$ 74,90
+        </span>
+
+      </div>
+
+    </div>
+
+
+    <div class="card">
+
+      <img
+        src="https://images.unsplash.com/photo-1565299624946-b28f40a0ae38"
+        alt="Pizza artesanal"
+      >
+
+      <div class="card-conteudo">
+
+        <h3>Pizza Artesanal</h3>
+
+        <p>
+          Massa de fermentação lenta,
+          molho artesanal e ingredientes selecionados.
+        </p>
+
+        <span class="preco">
+          R$ 64,90
+        </span>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="sobre" id="sobre">
+
+  <div class="sobre-container">
+
+    <div class="sobre-texto">
+
+      <h2>
+        Nossa História
+      </h2>
+
+      <p>
+        No Sabor & Arte, cada prato é preparado
+        para transformar uma refeição em uma experiência.
+
+        Unimos ingredientes selecionados,
+        atendimento especial e um ambiente acolhedor
+        para receber você, sua família e seus amigos.
+      </p>
+
+    </div>
+
+
+    <img
+      src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5"
+      alt="Restaurante"
+    >
+
+  </div>
+
+</section>
+
+
+<section class="destaque">
+
+  <h2 class="titulo">
+    Experiência Sabor & Arte
+  </h2>
+
+  <div class="destaque-box">
+
+    <p>
+      "Boa comida é aquela que reúne pessoas,
+      cria memórias e transforma momentos simples
+      em ocasiões especiais."
+    </p>
+
+  </div>
+
+</section>
+
+
+<section class="reserva" id="reserva">
+
+  <h2>
+    Reserve sua mesa
+  </h2>
+
+  <p>
+    Garanta seu lugar e venha viver uma experiência especial.
+  </p>
+
+  <a
+    class="botao-escuro"
+    href="https://wa.me/5500000000000"
+    target="_blank"
+  >
+    Reservar pelo WhatsApp
+  </a>
+
+</section>
+
+
+<footer>
+
+  © 2026 Sabor & Arte Restaurante • Todos os direitos reservados
+
+</footer>
+
+
+</body>
+</html>
